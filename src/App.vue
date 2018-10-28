@@ -1,11 +1,16 @@
 <template>
   <div id="app">
+    <Setup />
   </div>
 </template>
 
 <script>
+  import Setup from './components/Setup'
   export default {
     name: 'app',
+    components: {
+      Setup
+    }
   }
 </script>
 

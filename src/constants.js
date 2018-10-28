@@ -1,0 +1,1 @@
+export const FLUID_GOAL = 'fluidGoal';
