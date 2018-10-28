@@ -11,7 +11,7 @@
 
 <script>
   import Button from './shared/Button';
-  import { FLUID_GOAL} from "../constants";
+  import { FLUID_GOAL } from "../constants";
 
   export default {
     name: "Setup",
@@ -29,6 +29,7 @@
       },
       saveFluidGoal() {
         window.localStorage.setItem(FLUID_GOAL, this.fluidGoal.toString());
+        this.$emit('setup-finished');
       }
     }
   }
@@ -53,10 +54,6 @@
     font: inherit;
     color: inherit;
     width: 1.5em;
-
-    &:focus {
-      outline: none;
-    }
   }
 
   Button {
