@@ -1,25 +1,36 @@
 <template>
   <div id="app">
-    <Setup v-if="getFluidGoalFromLocalStorage() === 0"
-           v-on:setup-finished="$forceUpdate()"/>
-    <div v-else>
-      <p style="margin: 0;">Setup finished</p>
-    </div>
+    <Setup v-if="this.fluidGoal === 0"
+           v-on:setup-finished="getFluidGoalFromLocalStorage"/>
+    <Gauge v-else
+           v-bind:fluid-goal="this.fluidGoal"
+           v-bind:daily-fluid="this.dailyFluid"/>
   </div>
 </template>
 
 <script>
   import Setup from './components/Setup'
+  import Gauge from './components/Gauge'
   import { FLUID_GOAL } from "./constants";
 
   export default {
     name: 'app',
     components: {
-      Setup
+      Setup,
+      Gauge
+    },
+    data: function () {
+      return {
+        fluidGoal: 0,
+        dailyFluid: 0
+      }
+    },
+    created: function () {
+      this.getFluidGoalFromLocalStorage();
     },
     methods: {
       getFluidGoalFromLocalStorage() {
-        return window.localStorage.getItem(FLUID_GOAL) || 0;
+        this.fluidGoal = parseInt(window.localStorage.getItem(FLUID_GOAL)) || 0;
       }
     }
   }
