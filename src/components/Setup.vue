@@ -11,7 +11,7 @@
 
 <script>
   import Button from './shared/Button';
-  import { FLUID_GOAL } from "../constants";
+  import PersistenceService from '../services/PersistenceService';
 
   export default {
     name: "Setup",
@@ -28,8 +28,8 @@
         event.target.select();
       },
       saveFluidGoal() {
-        window.localStorage.setItem(FLUID_GOAL, this.fluidGoal.toString());
-        this.$emit('setup-finished');
+        PersistenceService.setFluidGoal(this.fluidGoal);
+        this.$router.push('/');
       }
     }
   }
