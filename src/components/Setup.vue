@@ -1,10 +1,12 @@
 <template>
   <div class="container">
     <p>How much do you want to drink per day?</p>
-    <form>
-      <input id="fluidGoal" v-model.number="fluidGoal" type="number" maxlength="1" v-on:click="selectAll">
-      <label for="fluidGoal">liters</label>
-    </form>
+    <FormInput label=""
+               v-bind:value="fluidGoal"
+               unit="liters"
+               justify-content="center"
+               v-on:value-changed="updateFluidGoal"
+    />
     <Button label="Start" v-on:click.native="saveFluidGoal" />
   </div>
 </template>
@@ -12,10 +14,12 @@
 <script>
   import Button from './shared/Button';
   import PersistenceService from '../services/PersistenceService';
+  import FormInput from './shared/FormInput';
 
   export default {
     name: "Setup",
     components: {
+      FormInput,
       Button
     },
     data: () => {
@@ -24,8 +28,8 @@
       }
     },
     methods: {
-      selectAll(event) {
-        event.target.select();
+      updateFluidGoal(newFluidGoal) {
+        this.fluidGoal = newFluidGoal;
       },
       saveFluidGoal() {
         PersistenceService.setFluidGoal(this.fluidGoal);
@@ -46,14 +50,6 @@
   p {
     text-align: center;
     margin: 3em 2em;
-  }
-
-  form > input {
-    background-color: transparent;
-    border: none;
-    font: inherit;
-    color: inherit;
-    width: 1.5em;
   }
 
   Button {
