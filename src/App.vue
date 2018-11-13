@@ -9,13 +9,13 @@
       <div id="fluid-input-controls">
         <FluidInput icon="wine-glass-alt"
                     label="120 ml"
-                    v-on:click.native="increaseFluidInputToday(0.12)"></FluidInput>
+                    v-on:click.native="increaseFluidInputToday(GULP)"></FluidInput>
         <FluidInput icon="wine-glass"
                     label="250 ml"
-                    v-on:click.native="increaseFluidInputToday(0.25)"></FluidInput>
+                    v-on:click.native="increaseFluidInputToday(GLASS)"></FluidInput>
         <FluidInput icon="wine-bottle"
                     label="500 ml"
-                    v-on:click.native="increaseFluidInputToday(0.5)"></FluidInput>
+                    v-on:click.native="increaseFluidInputToday(BOTTLE)"></FluidInput>
       </div>
     </div>
   </div>
@@ -25,7 +25,7 @@
   import Setup from './components/Setup';
   import Gauge from './components/Gauge';
   import FluidInput from './components/FluidInput';
-  import {FLUID_GOAL, FLUID_INPUT_TODAY} from "./constants";
+  import {FLUID_GOAL, FLUID_INPUT_TODAY, GULP, GLASS, BOTTLE} from "./constants";
 
   export default {
     name: 'app',
@@ -37,7 +37,10 @@
     data: function () {
       return {
         fluidGoal: 0,
-        fluidInputToday: 0
+        fluidInputToday: 0,
+        GULP: GULP,
+        GLASS: GLASS,
+        BOTTLE: BOTTLE
       }
     },
     created: function () {
