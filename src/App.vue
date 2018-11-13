@@ -17,11 +17,8 @@
 </script>
 
 <style lang="scss">
+  @import 'styles/global.scss';
   @import 'styles/colors.scss';
-
-  body {
-    margin: 0;
-  }
 
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -31,9 +28,7 @@
     height: 100vh;
     background-color: $dark-blue;
     color: $light-blue;
-  }
-
-  *:focus {
-    outline: none;
+    display: flex;
+    flex-direction: column;
   }
 </style>

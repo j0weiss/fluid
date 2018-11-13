@@ -57,6 +57,7 @@
     display: flex;
     flex-direction: column;
   }
+
   #gauge {
     flex: 1 1 auto;
   }
