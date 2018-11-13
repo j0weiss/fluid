@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faWineBottle, faWineGlassAlt, faWineGlass, faCog } from '@fortawesome/free-solid-svg-icons'
+import { faWineBottle, faWineGlassAlt, faWineGlass, faCog, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import './registerServiceWorker'
@@ -12,7 +12,8 @@ library.add(
   faWineBottle,
   faWineGlassAlt,
   faWineGlass,
-  faCog
+  faCog,
+  faChevronLeft
 );
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
