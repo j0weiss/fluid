@@ -1,11 +1,17 @@
 <template>
   <header>
-    <router-link v-if="isMainPath" to='/settings'>
-      <font-awesome-icon icon="cog" class="settings-icon"></font-awesome-icon>
-    </router-link>
-    <router-link v-if="isSettingsPath" to='/'>
-      <font-awesome-icon icon="chevron-left" class="settings-icon"></font-awesome-icon>
-    </router-link>
+    <template v-if="isMainPath">
+      <h1>Fluid</h1>
+      <router-link to='/settings'>
+        <font-awesome-icon icon="cog" class="settings-icon"></font-awesome-icon>
+      </router-link>
+    </template>
+    <template v-if="isSettingsPath" >
+      <h1>Settings</h1>
+      <router-link to='/'>
+        <font-awesome-icon icon="chevron-left" class="settings-icon"></font-awesome-icon>
+      </router-link>
+    </template>
   </header>
 </template>
 
@@ -27,10 +33,16 @@
 
   header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    height: 3em;
+  }
+
+  h1 {
+    margin-left: 1em;
   }
 
   .settings-icon {
-    margin: 1em;
+    margin-right: 1em;
   }
 </style>
