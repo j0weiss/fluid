@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <svg id="gauge" width="75%"></svg>
+    <svg id="svg"></svg>
   </div>
 </template>
 
 <script>
-  import { loadLiquidFillGauge } from '../liquidFillGauge';
-  import { LIGHT_BLUE, DARK_BLUE } from "../constants";
+  import {loadLiquidFillGauge} from '../liquidFillGauge';
+  import {DARK_BLUE, LIGHT_BLUE} from "../constants";
 
   export default {
     name: "Gauge",
@@ -33,7 +33,8 @@
         textColor: LIGHT_BLUE, // The color of the value text when the wave does not overlap it.
         waveTextColor: DARK_BLUE // The color of the value text when the wave overlaps it.
       };
-      this.gauge = loadLiquidFillGauge("gauge", this.fluidGoal, gauge_settings);
+      this.gauge = loadLiquidFillGauge("svg", this.fluidGoal, gauge_settings);
+      this.gauge.update(this.fluidGoal - this.fluidInputToday);
     },
     data: () => {
       return {
@@ -42,25 +43,28 @@
     },
     props: {
       fluidGoal: Number,
-      dailyFluid: Number
+      fluidInputToday: Number
     },
     watch: {
-      dailyFluid() {
-        this.gauge.update(this.fluidGoal - this.dailyFluid);
+      fluidInputToday() {
+        this.gauge.update(this.fluidGoal - this.fluidInputToday);
       }
     }
   }
 </script>
 
 <style lang="scss" scoped>
+  $gauge-size: 250px;
+
   .container {
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    svg {
-      width: 75%;
-    }
   }
+
+  svg {
+    width: $gauge-size;
+    height: $gauge-size;
+  }
+
 </style>
