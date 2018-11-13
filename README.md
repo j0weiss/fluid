@@ -1,4 +1,11 @@
-# fluid
+# Fluid
+
+A simple app which reminds you throughout the day to drink. 
+
+### Goal
+
+The goal of this project is to learn [vue.js](https://vuejs.org/) and also to create a Progressive Web App (PWA).
+
 
 ## Project setup
 ```
@@ -13,14 +20,4 @@ npm run serve
 ### Compiles and minifies for production
 ```
 npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
